@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="personalizacion.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Personaliza tu prenda</h1>
+    
+    <form action="procesar_personalizacion.php" method="post" enctype="multipart/form-data">
+        <label for="tipo_prenda">Selecciona el tipo de prenda:</label>
+        <select id="tipo_prenda" name="tipo_prenda">
+            <option value="polo">Polo</option>
+            <option value="polera">Polera</option>
+            <!-- Agrega más opciones de prendas aquí -->
+        </select>
+
+        <label for="imagen_estampado">Sube una imagen para el estampado:</label>
+        <input type="file" id="imagen_estampado" name="imagen_estampado" accept="image/*">
+
+        <input type="submit" value="Personalizar">
+    </form>
+</body>
+</html>
