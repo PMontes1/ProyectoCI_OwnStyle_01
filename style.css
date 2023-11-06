@@ -1,0 +1,553 @@
+/* Resetear estilos por defecto del navegador */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para el encabezado */
+
+/* Primera parte */
+:root {
+    --navbarHeight: 65px;
+    --sidebarWidth: 45vw;
+    --primary: #080808;
+    --secondary: #2d2ba5;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+
+.header{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.7rem;
+}
+.header__left{
+    margin: 1rem;
+}
+
+.sm-content{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+.sm-content .sm{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.sm-content i{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    color: var(--secondary);
+    transition: 0.15s color;
+}
+.sm-content i:hover{
+    color: black;
+}
+
+
+.header__center{
+    height: 100%;
+    padding: 0 2rem;
+}
+.logo-content{
+    width: 200px;
+    height: 100%;
+}
+.logo-content img{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+}
+
+.info-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none; 
+}
+
+.info-content .usuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: black;
+}
+.info-content .usuario i{
+    font-size: 20px;
+}
+
+.info-content .wsp-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: green;
+}
+
+.menu-horizontal{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+.menu-horizontal > li > a{
+	display: block;
+	padding: 15px 20px;
+	color: white;
+	text-decoration: none;
+}
+.menu-vertical{		
+	position: absolute;
+	display: none;
+	list-style: none;
+	width: 200px;
+	background-color: rgba(0, 0, 0, .5);
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+.menu-vertical li:hover{
+	background-color: black;
+}
+.menu-vertical li a{
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 15px 15px 15px 20px;
+}
+
+
+/* Navbar */
+.navbar {
+    position: relative;
+    background: var(--primary);
+    color: #fff;
+    padding: 0 15px;
+    width: 100%;
+    height: var(--navbarHeight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navbar__links {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease all, 0s ease background;
+}
+.navbar__link {
+    height: var(--navbarHeight);
+    text-transform: uppercase;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar__link a {
+    text-decoration: none;
+    color: #fff;
+}
+.navbar__link:hover {
+    background: var(--secondary);
+    cursor: pointer;
+}
+.navbar__link:hover a {
+    color: var(--primary);
+}
+
+.navbar.sticky {
+    position: fixed;
+    z-index: 40;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navbar__toggler{
+    opacity: 0;
+}
+
+@keyframes appears {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes appears2 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 750px) {
+    .navbar .navbar__toggler {
+        opacity: 1;
+        position: absolute;
+        top: calc(--navbarHeight/ 2);
+        left: 20px;
+        z-index: 99;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        outline: none;
+        border: none;
+        padding: 0;
+        animation: appears 1s;
+    }
+    .navbar__toggler > * {
+        width: 80%;
+        height: 3px;
+        background: #fff;
+        margin: 3px 0;
+        transition: 0.1s all;
+    }
+    /* for X transition */
+    .navbar.collapsed .navbar__toggler .line1 {
+        transform: translateY(9px) rotate(-45deg);
+    }
+    .navbar.collapsed .navbar__toggler .line2 {
+        opacity: 0;
+    }
+    .navbar.collapsed .navbar__toggler .line3 {
+        transform: translateY(-9px) rotate(45deg);
+    }
+
+    .navbar__links {
+        position: fixed;
+        background: #080808;
+        z-index: 40;
+        top: 0;
+        left: -100%;
+        flex-direction: column;
+        width: var(--sidebarWidth);
+        height: 100vh;
+    }
+
+    .navbar.collapsed .navbar__links {
+        left: 0;
+    }
+
+    .navbar__link:first-child {
+        margin-top: 80px;
+    }
+    .navbar.collapsed .navbar__link {
+        width: 100%;
+    }
+    .navbar.collapsed .navbar__link a {
+        color: #fff;
+    }
+    .navbar.collapsed .navbar__linki:hover a {
+        color: var(--primary);
+    }
+
+    .navbar.sticky {
+        position: fixed;
+        z-index: 40;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .navbar.collapsed .navbar__toggler{
+        position: fixed;
+        animation: appears2 1s;
+    }
+}
+
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------*/
+/SLIDER/
+
+/* Alinea el slider debajo del header y ocupa el ancho completo */
+.slider-container {
+    position: relative;
+   
+    width: 100%;
+    top: 360px; /* Alinea el slider debajo del header */
+    background: #000; /* Cambia el color de fondo según tus preferencias */
+}
+.position{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider {
+    background-image: url(../img/fotoprincipal.jpg);
+    background-size: cover;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    margin-top: 170px;
+    width: 100%;
+    border-radius: 0; /* Quita el borde redondeado si no es necesario */
+    animation: animate 10s infinite;
+}
+/* Agrega estilo al contenido del slider */
+.slider-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+/* Agrega una capa de superposición */
+.slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Color de superposición oscuro con transparencia */
+}
+
+/* Agrega estilo al contenido del slider */
+.slider-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+.slider-content h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.slider-content p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.slider-content .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #6c7ae0; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.slider-content .btn:hover {
+    background: #3949ab; /* Cambia el color de fondo al pasar el mouse */
+}
+@keyframes animate{
+    60%{
+        background-image: url(../img/fotoprincipal.jpg);
+        background-size:cover;
+    }
+    80%{
+        background-image: url(../img/foto\ tienda2.jpg);
+        background-size:cover;
+    }
+    100%{
+        background-image: url(../img/foto\ tienda4.jpg);
+        background-size:cover;
+    }
+
+}
+
+
+/*--------------------------------------------------------------------*/
+
+/* Sección */
+section {
+    background-color: #f6f5f5; /* Fondo gris suave */
+    padding: 50px 0;
+}
+/* Introducción */
+.intro {
+    padding:60px 0;
+    text-align: center;
+    margin-top: 700px;
+}
+.intro2 {
+    padding:60px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+.intro h1 {
+    font-size: 36px;
+    color: #000; /* Color de texto blanco */
+    font-weight: 700;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.intro h1:hover {
+    transform: scale(1.05);
+    color: #ff0000; /* Cambia el color del título al pasar el mouse */
+}
+
+.intro p {
+    margin-top: 30px;
+    font-size: 20px;
+    color: #555; /* Color de texto gris oscuro */
+    line-height: 1.5;
+}
+/*CATALOGO--*/
+.catalog-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    margin-top: 70px; /* Aumenta la distancia entre el slider y el catálogo */
+}
+
+.catalog-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 30%; /* Ancho fijo para todas las cartas */
+    height: 350px; /* Establece una altura fija para todas las cartas */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.catalog-card img {
+    width: 100%; /* Establece un ancho fijo del 100% */
+    height: 180px; /* Establece una altura fija */
+    object-fit: cover; /* Ajusta el tamaño y recorta las imágenes para que encajen */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card-content {
+    text-align: left; /* Alinea el texto a la izquierda */
+    padding: 20px;
+}
+
+.card-content h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.card-content p {
+    font-size: 16px;
+    color: #777;
+    text-align: justify; /* Justifica el texto */
+}
+
+.catalog-card:hover {
+    transform: scale(1.05); /* Escala la carta al pasar el mouse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega sombreado suave al pasar el mouse */
+}
+
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+  }
+  
+  .logo {
+    width: 50px;
+  }
+  
+  .logo img {
+    width: 100%;
+  }
+  
+  .links, .socials {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .links ul, .socials ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .links li, .socials li {
+    margin: 10px;
+  }
+  
+  .links a, .socials a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .socials i {
+    font-size: 20px;
+  }
+  
+  .links a:hover, .socials a:hover {
+    color: #ff9900;
+  }
+  
+  .socials a:hover i {
+    transform: rotate(360deg);
+  }
+  
+  .socials a:hover i.fa-facebook-f {
+    filter: brightness(2);
+  }
+  
+  .socials a:hover i.fa-twitter {
+    filter: hue-rotate(180deg);
+  }
+  
+  .socials a:hover i.fa-instagram {
+    filter: invert(1);
+  }
+  
+  @media (min-width: 768px) {
+    .footer {
+      flex-direction: row;
+    }
+  }
