@@ -66,59 +66,60 @@
     <!-- -------------------------------------------------------------------------------- -->
     <!-- -------------------------------------------------------------------------------- -->
 
-    <section class="seccion1">
-        <div class="texto-banner">
-            <h1>Descubre tu propio estilo</h1>
-            <p>Explora nuestra colección única de ropa a la moda al alcance de tu inspiracion</p>
-            <a href="#" class="boton">Comenzar</a>
+    <!-- Slider -->
+    <div class="slider-container">
+        <div class="slider position">
+            <div class="slider-overlay"></div>
+            <div class="slider-content">
+                <h1>Bienvenido a OwnStyle</h1>
+                <p>Su ropa perfecta</p>
+                <a href="#" class="btn">Explore</a>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- -------------------------------------------------------------------------------- -->
-    <!-- -------------------------------------------------------------------------------- -->
-    <!-- -------------------------------------------------------------------------------- -->
+    <section>
+    <!-- INTRO-CATALOGO -->
+    <div class="intro">
+        <h1>Catálogo Deportivo</h1>
+        <p>Explora nuestra selección de productos deportivos, incluyendo prendas y equipamiento para tus actividades deportivas.</p>
+    </div>
 
-    <section class="nosotros">
-        <div class="container">
-            <h2>Acerca de nosotros</h2>
-            <p>Own Style es más que una marca de ropa; es una expresión de tu propio estilo y personalidad. Creemos que
-                la moda es una forma de empoderamiento, y nuestro objetivo es brindarte la libertad de crear prendas
-                únicas que reflejen quién eres.</p>
-
-            <p>Nuestro nombre, "OwnStyle", representa precisamente eso: tu propio estilo. Queremos que te sientas libre
-                de ser tú mismo y de destacar entre la multitud, sin importar las tendencias actuales. Con OwnStyle,
-                puedes personalizar tus diseños de ropa de manera única y auténtica.</p>
-
-
-            <ul>
-                <p>Lo que nos distingue:</p>
-                <p>
-                    <strong>Personalización sin límites:</strong> En OwnStyle, te ofrecemos la capacidad de personalizar
-                    cada detalle de tus prendas, desde colores hasta los patrones y los cortes. Tu creatividad es el
-                    límite.
-                </p>
-                <p>
-                    <strong>Calidad excepcional:</strong> Nos enorgullecemos de utilizar materiales de la más alta
-                    calidad y de confeccionar cada prenda con cuidado y atención al detalle.
-                </p>
-                <p>
-                    <strong>Moda sostenible:</strong> Creemos en la moda sostenible y trabajamos constantemente para
-                    reducir nuestro impacto ambiental. Nuestras prendas están diseñadas para durar y resistir las
-                    tendencias pasajeras.
-                </p>
-                <p>
-                    <strong>Comunidad OwnStyle:</strong> Únete a una comunidad de amantes de la moda que valoran la
-                    individualidad y la creatividad. Comparte tus creaciones y encuentra inspiración en otros
-                    diseñadores de OwnStyle.
-                </p>
-            </ul>
-
-            <p>OwnStyle es el lugar donde la moda se encuentra con la individualidad. Únete a nosotros y crea tu propio
-                estilo, sin comprometer tu autenticidad.</p>
-
+    <!-- CATALOGO -->
+    
+    <div class="catalog-container">
+        <!-- Maleta de Ejercicio -->
+        <div class="catalog-card">
+            <img src="img.tienda\maletapequeña4.png" alt="Maleta de Ejercicio" />
+            <div class="card-content">
+                <h2>Maleta de Ejercicio</h2>
+                <p>Una maleta de ejercicio espaciosa para llevar tu equipo deportivo y accesorios a tus entrenamientos y viajes.</p>
+            </div>
         </div>
-    </section>
 
+        <!-- Prendas Deportivas -->
+        <div class="catalog-card">
+            <img src="img.tienda\polohombreblanco2.png" alt="Camiseta Deportiva" />
+            <div class="card-content">
+                <h2>Camiseta Deportiva</h2>
+                <p>Una camiseta deportiva cómoda y transpirable para tus entrenamientos.</p>
+            </div>
+        </div>
+
+       <!-- Short -->
+       <div class="catalog-card">
+            <img src="img.tienda\lycracorta4.png" alt="Short Deportivo" />
+            <div class="card-content">
+                <h2>Short Deportivo</h2>
+                <p>Un short lycra deportivo ligero y transpirable para un rendimiento óptimo en tus entrenamientos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- -------------------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------------------- -->
 
     <section class="promociones">
         <div class="titulo-tienda">
@@ -133,21 +134,25 @@
                 $Sql = "SELECT * FROM productos";
                 $resultado = $conexion->query($Sql);
                 $contador = 0; // Inicializamos el contador
-
+                
                 while ($Fila = $resultado->fetch_assoc()) {
                     if ($contador >= 4) {
                         break; // Salir del bucle después de mostrar los 4 primeros elementos
                     }
-                ?>
+                    ?>
 
                     <div class="item">
                         <img src="data:image/jpeg;base64,<?php echo base64_encode($Fila['Foto']); ?>" class="img-item">
-                        <span class="titulo-item"><?php echo $Fila['NombreProducto']; ?></span>
-                        <span class="precio-item">S/ <?php echo $Fila['Precio']; ?>.00</span>
+                        <span class="titulo-item">
+                            <?php echo $Fila['NombreProducto']; ?>
+                        </span>
+                        <span class="precio-item">S/
+                            <?php echo $Fila['Precio']; ?>.00
+                        </span>
                         <button class="boton-item">Agregar al Carrito</button>
                     </div>
 
-                <?php
+                    <?php
                     $contador++; // Incrementamos el contador
                 }
                 ?>

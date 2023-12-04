@@ -44,7 +44,7 @@
             <li class="navbar__link"><a href="index.php">Inicio</a></li>
             <li class="navbar__link"><a href="nosotros.php">Nosotros</a></li>
             <li class="navbar__link"><a href="tienda.php">Tienda</a></li>
-            <li class="navbar__link"><a href="contacto.php">Personalizado</a></li>
+            <li class="navbar__link"><a href="personalizado.php">Personalizado</a></li>
             <li class="navbar__link"><a href="contacto.php">Contacto</a></li>
             <ul class="menu-horizontal">
                     <li><a href="$"><i class="fa-regular fa-user"></i></a>
